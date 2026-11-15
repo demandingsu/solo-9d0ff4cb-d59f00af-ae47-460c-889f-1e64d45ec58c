@@ -1,0 +1,15 @@
+services:
+  ais-api:
+    build: .
+    image: ais-port-stay:local
+    ports:
+      - "8000:8000"
+    environment:
+      AIS_DB_PATH: /data/ais.sqlite3
+      AIS_DEMO_ENABLED: "1"
+    volumes:
+      - ais-data:/data
+    restart: unless-stopped
+
+volumes:
+  ais-data:
